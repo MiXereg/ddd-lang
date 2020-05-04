@@ -3,7 +3,7 @@
 
 ## Installation
 1. Download and install [rust programming language](https://www.rust-lang.org/) and [cargo](https://github.com/rust-lang/cargo).
-2. In terminal open direcotry where you've cloned this repository.
+2. In terminal open directory where you've cloned this repository.
 3. Run:
    ```
    $ cargo build
