@@ -7,21 +7,21 @@ pub struct Token {
 #[derive(Debug, Copy, Clone)]
 pub enum TokenType {
     // One-character tokens
-    Plus,
-    Minus,
-    Eq,
-    Lt,
-    Gt,
+    Plus,  // '+'
+    Minus, // '-'
+    Eq,    // '='
+    Lt,    // '<'
+    Gt,    // '>'
 
     Literal(Literal),
 
     // Multi-character tokens
-    EqEq,
-    Le,
-    Ge,
+    EqEq, // "=="
+    Le,   // "<="
+    Ge,   // ">="
 
-    // Whitespace
-    Whitespace,
+    // Whitespace: '\t', '\n', '\r', ' ', U+000B, U+000C, U+0085, U+200E, U+200F, U+2028, U+2029
+    Whitespace(u64),
 
     // Special tokens
     Eof,

@@ -67,7 +67,8 @@ fn check_char_type(c: char) -> TokenType {
         '>' => TokenType::Gt,
         // From 0 to 9 digit
         c if c.is_digit(10) => TokenType::Literal(Literal::Integer),
-        c if c.is_whitespace() => TokenType::Whitespace,
+        // Whitespace
+        c if c.is_whitespace() => TokenType::Whitespace(1),
         _ => TokenType::IllegalToken,
     }
 }
@@ -76,17 +77,22 @@ fn check_char_type(c: char) -> TokenType {
 fn check_token_type(char_type: TokenType, last_token_type: TokenType) -> TokenType {
     match char_type {
         TokenType::Eq => match last_token_type {
-            // '=='
+            // "=="
             TokenType::Eq => TokenType::EqEq,
-            // '<='
+            // "<="
             TokenType::Lt => TokenType::Le,
-            // '>='
+            // ">="
             TokenType::Gt => TokenType::Ge,
             _ => TokenType::IllegalToken,
         },
         TokenType::Literal(Literal::Integer) => match last_token_type {
             // Integer
             TokenType::Literal(Literal::Integer) => TokenType::Literal(Literal::Integer),
+            _ => TokenType::IllegalToken,
+        },
+        TokenType::Whitespace(1) => match last_token_type {
+            // Whitespace
+            TokenType::Whitespace(whitespace_count) => TokenType::Whitespace(whitespace_count + 1),
             _ => TokenType::IllegalToken,
         },
         _ => TokenType::IllegalToken,

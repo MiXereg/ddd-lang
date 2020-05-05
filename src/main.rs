@@ -15,7 +15,6 @@ fn main() {
 
         reader.tokenize();
 
-        reader.tokenize();
         println!("{}\n", reader.src);
         print!("{:?}", reader.tokens);
     } else {
