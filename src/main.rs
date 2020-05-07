@@ -14,8 +14,8 @@ fn main() {
 
         reader.tokenize();
 
-        println!("{}\n", reader.src);
-        print!("{:?}", reader.tokens);
+        println!("\nSource:\n{}\n", reader.src);
+        print!("Tokens:\n{:?}", reader.tokens);
     } else {
         let mut input = String::new();
         io::stdin()
@@ -25,6 +25,6 @@ fn main() {
         let mut reader = lexer::reader::Reader::new(input);
 
         reader.tokenize();
-        print!("\n{:?}", reader.tokens);
+        print!("\nTokens:\n{:?}", reader.tokens);
     }
 }
