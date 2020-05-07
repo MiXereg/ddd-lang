@@ -3,3 +3,6 @@ name = "ddd-lang"
 version = "0.0.1"
 authors = ["MiXerek"]
 edition = "2018"
+
+[dependencies]
+"lexer" = { path = "./src/lexer", version = "0.0.1" }

@@ -31,4 +31,5 @@ pub enum TokenType {
 #[derive(Debug, Copy, Clone)]
 pub enum Literal {
     Integer,
+    String(bool),
 }

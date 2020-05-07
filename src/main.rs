@@ -1,5 +1,4 @@
-mod reader;
-mod token;
+use lexer;
 
 use std::env;
 use std::fs;
@@ -11,7 +10,7 @@ fn main() {
     if args.len() > 1 && args[1] == "--src" {
         let file = fs::read_to_string(&args[2]).expect("File doesn't exist!");
 
-        let mut reader = reader::Reader::new(file);
+        let mut reader = lexer::reader::Reader::new(file);
 
         reader.tokenize();
 
@@ -23,7 +22,7 @@ fn main() {
             .read_line(&mut input)
             .expect("Something went wrong...");
 
-        let mut reader = reader::Reader::new(input);
+        let mut reader = lexer::reader::Reader::new(input);
 
         reader.tokenize();
         print!("\n{:?}", reader.tokens);
